@@ -5,7 +5,7 @@ type Order[T any] interface {
 }
 
 type BasicOrder interface {
-	~int | ~int8 | ~int16 | ~int32 | ~int64 | ~float32 | ~float64 | ~byte
+	~int | ~int8 | ~int16 | ~int32 | ~int64 | ~float32 | ~float64 | ~byte | ~string
 }
 
 func Less[T BasicOrder](a T, b T) bool {
