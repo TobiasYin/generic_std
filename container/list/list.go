@@ -5,8 +5,15 @@ import (
 )
 
 type Element[T any] struct {
-	item  *std_list.Element
-	Value T
+	item *std_list.Element
+}
+
+func (e Element[T]) SetValue(v T) {
+	e.item.Value = v
+}
+
+func (e Element[T]) GetValue() T {
+	return e.item.Value.(T)
 }
 
 // Next returns the next list element or nil.
@@ -25,7 +32,7 @@ func wrapElement[T any](e *std_list.Element) *Element[T] {
 	if e == nil {
 		return nil
 	}
-	return &Element[T]{item: e, Value: e.Value.(T)}
+	return &Element[T]{item: e}
 }
 
 type List[T any] struct {

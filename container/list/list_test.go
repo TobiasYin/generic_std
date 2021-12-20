@@ -20,7 +20,7 @@ func TestList(t *testing.T) {
 
 	for list.Len() > 0 {
 		f := list.Front()
-		fmt.Println(f.Value)
+		fmt.Println(f.GetValue())
 		list.Remove(f)
 	}
 }
