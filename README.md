@@ -32,20 +32,20 @@ import (
 )
 
 func MapTest(){
-	var m sync.Map
-	m.Store("hello", "1")
-	m.Store(2, 1)
-	m.Store("Data", 2)
-	data, ok := m.Load("hello") // data: interface{}
-	if ok {
-		realData := data.(string)
-		...
+    var m sync.Map
+    m.Store("hello", "1")
+    m.Store(2, 1)
+    m.Store("Data", 2)
+    data, ok := m.Load("hello") // data: interface{}
+    if ok {
+        realData := data.(string)
+        ...
     }
-	data2, ok := m.Load("Data") // data: interface{}
-	if ok {
-		realData := data2.(string) // panic, data2 is int ,can't assert to string
-		...
-	}
+    data2, ok := m.Load("Data") // data: interface{}
+    if ok {
+        realData := data2.(string) // panic, data2 is int ,can't assert to string
+        ...
+    }
 }
 
 ```
@@ -59,22 +59,22 @@ import (
 )
 
 func MapTest(){
-	var m sync.Map[string, string]
-	m.Store("hello", "1")
-	// m.Store(2, 1) // compile error
-	// m.Store("Data", 2) // compile error
-	m.Store("Data", "2")
-	data, ok := m.Load("hello") // data: string, no need for type assertion
-	if ok {
-		// use data
-		...
+    var m sync.Map[string, string]
+    m.Store("hello", "1")
+    // m.Store(2, 1) // compile error
+    // m.Store("Data", 2) // compile error
+    m.Store("Data", "2")
+    data, ok := m.Load("hello") // data: string, no need for type assertion
+    if ok {
+        // use data
+        ...
     }
-	data2, ok := m.Load("Data") // data: string
-	if ok {
-		// use data2
-		// data2 type is string, this will be sure if code can compile. 
-		...
-	}
+    data2, ok := m.Load("Data") // data: string
+    if ok {
+        // use data2
+        // data2 type is string, this will be sure if code can compile. 
+        ...
+    }
 }
 
 ```
