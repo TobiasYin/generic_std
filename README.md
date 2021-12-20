@@ -2,24 +2,38 @@
 generic wrap for standard lib of golang.
 
 Generic will be supported in go 1.18. 
+
 But for now, standard lib will not support generic containers.
+
 This lib wraps the standard lib. And add some useful generic functions or containers not implemented in standard lib.
+
 The APIs between the lib and standard lib are not totally compatible. But I try to keep the different minimum.
+
 
 See Also: [Stream API for Go 1.18](https://github.com/TobiasYin/functional)
 
 ## Supported List
 ### Wrapper for Standard lib
 container/heap.Heap
+
 container/list.List
+
 container/ring.Ring
 
+
+
 sort.Search
+
 sort.Slice
 
+
+
 sync/atomic.Value
+
 sync.Map
+
 sync.Pool
+
 
 ### Addition utils
 container/set.Set
