@@ -1,7 +1,5 @@
 package result
 
-import "fmt"
-
 type Result[T any] struct {
 	err  error
 	item T
@@ -32,7 +30,7 @@ func (r Result[T]) IsErr() bool {
 
 func (r Result[T]) Unwrap() T {
 	if r.IsErr() {
-		panic(fmt.Sprintf("unwrap err value: err: %s", r.err.Error()))
+		panic(r.err)
 	}
 	return r.item
 }
@@ -61,4 +59,8 @@ func (r Result[T]) UnwrapOrNil() T {
 
 func (r Result[T]) UnwrapWithOk() (T, bool) {
 	return r.UnwrapOrNil(), r.IsOk()
+}
+
+func (r Result[T]) Unzip() (T, error) {
+	return r.UnwrapOrNil(), r.Err()
 }
